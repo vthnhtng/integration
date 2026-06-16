@@ -1,0 +1,1 @@
+docker exec -it integration-app-1 bash
