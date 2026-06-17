@@ -10,6 +10,8 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -19,6 +21,8 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
+@AllArgsConstructor
+@Builder
 public class Order {
 
     @Id
@@ -32,6 +36,7 @@ public class Order {
         cascade = CascadeType.ALL,
         orphanRemoval = true
     )
+    @Builder.Default
     private Set<OrderItem> items = new HashSet<>();
 
     public void addItem(OrderItem orderItem) {

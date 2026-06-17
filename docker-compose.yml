@@ -1,6 +1,6 @@
 services:
   app:
-    image: eclipse-temurin:21-jdk
+    image: maven:3.9-eclipse-temurin-21
     working_dir: /app
     volumes:
       - .:/app
@@ -10,7 +10,7 @@ services:
       SPRING_DATASOURCE_URL: jdbc:mysql://db:3306/integration
     depends_on:
       - db
-    command: ./mvnw spring-boot:run
+    command: mvn spring-boot:run
 
   db:
     image: mysql:8.4
