@@ -9,9 +9,6 @@ import jakarta.validation.constraints.NotNull;
 public record SyncOrderRequest(
 
     @NotBlank
-    String sourceSystem,
-
-    @NotBlank
     String eventType,
 
     @NotNull
@@ -19,7 +16,7 @@ public record SyncOrderRequest(
 
     @Valid
     @NotNull
-    OrderRequest order
+    OrderDto order
 
 ) {
 }
