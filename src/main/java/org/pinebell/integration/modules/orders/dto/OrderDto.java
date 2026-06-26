@@ -10,6 +10,7 @@ import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.PositiveOrZero;
 
 public record OrderDto(
 
@@ -23,22 +24,11 @@ public record OrderDto(
     String currency,
 
     @NotNull
+    @PositiveOrZero
     BigDecimal totalAmount,
 
     @Valid
     @NotEmpty
-    List<ItemDto> items
+    List<OrderItemDto> items
 ) {
-    public static OrderDto fromOrder(Order order) {
-        return new OrderDto(
-            order.getSource(),
-            order.getNumber(),
-            order.getCurrency(),
-            order.getTotalAmount(),
-            order.getItems()
-                .stream()
-                .map(item -> ItemDto.fromOrderItem(item))
-                .collect(Collectors.toList())
-        );
-    }
 }

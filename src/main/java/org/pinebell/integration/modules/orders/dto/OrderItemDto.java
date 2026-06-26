@@ -7,9 +7,10 @@ import org.pinebell.integration.modules.orders.domain.OrderItem;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Positive;
+import jakarta.validation.constraints.PositiveOrZero;
 import jakarta.validation.constraints.Size;
 
-public record ItemDto(
+public record OrderItemDto(
 
     @NotBlank
     String name,
@@ -19,18 +20,12 @@ public record ItemDto(
     String sku,
 
     @Positive
+    @Positive
     Integer quantity,
 
     @NotNull
+    @PositiveOrZero
     BigDecimal unitPrice
 
 ) {
-    public static ItemDto fromOrderItem(OrderItem orderItem) {
-        return new ItemDto(
-            orderItem.getName(),
-            orderItem.getSku(),
-            orderItem.getQuantity(),
-            orderItem.getUnitPrice()
-        );
-    }
 }

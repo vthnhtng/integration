@@ -1,16 +1,12 @@
 package org.pinebell.integration.modules.outbox.dto;
 
 import java.util.UUID;
-
 import org.pinebell.integration.modules.outbox.domain.OutboxAggregateType;
 
-import lombok.Builder;
-
-@Builder
-public record CreateOutboxMessageInput(
+public record CreateOutboxMessage(
     OutboxAggregateType aggregateType,
-    UUID aggregateUUID,
+    UUID aggregateUuid,
     String messageType,
     String payload
-) {    
+) {
 }

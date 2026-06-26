@@ -1,8 +1,8 @@
 package org.pinebell.integration.modules.orders.application;
 
-import org.pinebell.integration.modules.orders.domain.Order;
 import org.pinebell.integration.modules.orders.dto.SyncOrderRequest;
+import org.pinebell.integration.modules.orders.dto.SyncOrderResponse;
 
 public interface SyncOrderHandler {
-    public Order execute(SyncOrderRequest request);
+    SyncOrderResponse execute(SyncOrderRequest request);
 }
