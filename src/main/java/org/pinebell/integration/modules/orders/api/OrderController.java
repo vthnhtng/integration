@@ -2,7 +2,7 @@ package org.pinebell.integration.modules.orders.api;
 
 import org.pinebell.integration.modules.orders.dto.SyncOrderRequest;
 import org.pinebell.integration.modules.orders.dto.SyncOrderResponse;
-import org.pinebell.integration.modules.orders.application.SyncOrderHandler;
+import org.pinebell.integration.modules.orders.service.SyncOrderHandler;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -26,5 +26,6 @@ public class OrderController {
     public SyncOrderResponse syncOrder(@Valid @RequestBody SyncOrderRequest request) {
 
         return syncOrderHandler.execute(request);
+
     }
 }

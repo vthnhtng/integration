@@ -1,6 +1,5 @@
-package org.pinebell.integration.modules.orders.application.implement;
+package org.pinebell.integration.modules.orders.service.implement;
 
-import org.pinebell.integration.modules.orders.application.SyncOrderHandler;
 import org.pinebell.integration.modules.orders.domain.Order;
 import org.pinebell.integration.modules.orders.domain.OrderFactory;
 import org.pinebell.integration.modules.orders.domain.OrderOutboxMessageFactory;
@@ -9,6 +8,7 @@ import org.pinebell.integration.modules.orders.dto.SyncOrderRequest;
 import org.pinebell.integration.modules.orders.dto.SyncOrderResponse;
 import org.pinebell.integration.modules.orders.error.OrderExistsException;
 import org.pinebell.integration.modules.orders.infrastructure.OrderRepository;
+import org.pinebell.integration.modules.orders.service.SyncOrderHandler;
 import org.pinebell.integration.modules.outbox.domain.OutboxMessage;
 import org.pinebell.integration.modules.outbox.domain.OutboxMessageAction;
 import org.pinebell.integration.modules.outbox.domain.OutboxStatus;

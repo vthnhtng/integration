@@ -1,4 +1,4 @@
-package org.pinebell.integration.modules.orders.application;
+package org.pinebell.integration.modules.orders.service;
 
 import org.pinebell.integration.modules.orders.dto.SyncOrderRequest;
 import org.pinebell.integration.modules.orders.dto.SyncOrderResponse;
