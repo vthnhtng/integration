@@ -29,8 +29,10 @@ public class SignatureBasedFilter extends OncePerRequestFilter {
         HttpServletResponse response,
         FilterChain filterChain
     ) throws ServletException, IOException {
-        String signature = request.getHeader("X-Signature");
-        String timestampStr = request.getHeader("X-Timestamp");
+        CachedBodyHttpServletRequest cachedBodyRequest = new CachedBodyHttpServletRequest(request);
+
+        String signature = cachedBodyRequest.getHeader("X-Signature");
+        String timestampStr = cachedBodyRequest.getHeader("X-Timestamp");
 
         if (signature == null || timestampStr == null) {
             response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
@@ -48,7 +50,7 @@ public class SignatureBasedFilter extends OncePerRequestFilter {
             return;
         }
 
-        String payload = request.getReader().lines().collect(Collectors.joining(System.lineSeparator()));
+        String payload = cachedBodyRequest.getReader().lines().collect(Collectors.joining(System.lineSeparator()));
         String generatedSignature = signatureGenerator.generate(payload, timestamp);
 
         if (!signature.equals(generatedSignature)) {
@@ -57,6 +59,6 @@ public class SignatureBasedFilter extends OncePerRequestFilter {
             return;
         }
 
-        filterChain.doFilter(request, response);
+        filterChain.doFilter(cachedBodyRequest, response);
     }
 }

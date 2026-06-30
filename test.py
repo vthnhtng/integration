@@ -16,19 +16,28 @@ SECRET = "secret"
 # Request Body
 # ===========================
 payload = {
-    "orderId": "ORDER-001",
-    "platform": "SHOPIFY",
-    "customer": {
-        "name": "John Doe",
-        "email": "john@example.com"
-    },
-    "items": [
-        {
-            "sku": "SKU-001",
-            "quantity": 2,
-            "price": 19.99
-        }
-    ]
+    "eventType": "ORDER_CREATED",
+    "eventTimestamp": "2026-06-17T09:00:00Z",
+    "order": {
+        "source": "MAGENTO",
+        "orderNumber": "#10006",
+        "currency": "USD",
+        "totalAmount": 2400,
+        "items": [
+            {
+                "name": "iPhone 16",
+                "sku": "SKU001",
+                "quantity": 2,
+                "unitPrice": 1200
+            },
+            {
+                "name": "iPhone 16",
+                "sku": "SKU001",
+                "quantity": 2,
+                "unitPrice": 1200
+            }
+        ]
+    }
 }
 
 # Serialize JSON once.
